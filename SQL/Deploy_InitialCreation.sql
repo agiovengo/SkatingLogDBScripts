@@ -34,7 +34,7 @@ GO
 
 CREATE TABLE [dbo].[DetailedDescription](
 	[DetailedDescriptionId] [INT] NOT NULL IDENTITY(1,1),
-	[TimeEntryId] [INT] NOT NULL,
+	[EntryId] [INT] NOT NULL,
 	[DetailedDescription] [VARCHAR](500) NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
@@ -43,8 +43,8 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[DetailedDescription]  WITH CHECK ADD CONSTRAINT [FK_DetailedDescription_TimeEntryId] FOREIGN KEY([TimeEntryId])
-REFERENCES [dbo].[TimeSheetEntry] ([EntryId])
+ALTER TABLE [dbo].[DetailedDescription]  WITH CHECK ADD CONSTRAINT [FK_DetailedDescription_SkatingLogEntry_EntryId] FOREIGN KEY([EntryId])
+REFERENCES [dbo].[SkatingLogEntry] ([EntryId])
 GO
 
 CREATE TABLE [dbo].[lkClassifications](
@@ -84,7 +84,7 @@ CREATE TABLE [dbo].[SharpeningEntry](
 	
 PRIMARY KEY CLUSTERED 
 (
-	[MaintenanceId] ASC
+	[SharpeningEntryId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
