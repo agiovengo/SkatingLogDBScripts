@@ -21,30 +21,16 @@ CREATE TABLE [dbo].[SkatingLogEntry](
 	[EntryClassificationId] [INT] NOT NULL,
 	[LocationId] [INT] NOT NULL,
 	[BasicDescription] [VARCHAR](500) NOT NULL,
+	[DetailedDescription] [VARCHAR](1024) NULL,
 	[FreestyleLevel] [INT] NOT NULL,
 	[DanceLevel] [INT] NOT NULL,
-	[TotalTimeMinutes]  AS (DATEDIFF(MINUTE,[StartDateTime],[StopDateTime])) PERSISTED,
+	[TotalTimeMinutes] AS (DATEDIFF(MINUTE,[StartDateTime],[StopDateTime])) PERSISTED,
 	
 PRIMARY KEY CLUSTERED 
 (
 	[EntryId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[DetailedDescription](
-	[DetailedDescriptionId] [INT] NOT NULL IDENTITY(1,1),
-	[EntryId] [INT] NOT NULL,
-	[DetailedDescription] [VARCHAR](500) NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[DetailedDescriptionId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-
-ALTER TABLE [dbo].[DetailedDescription]  WITH CHECK ADD CONSTRAINT [FK_DetailedDescription_SkatingLogEntry_EntryId] FOREIGN KEY([EntryId])
-REFERENCES [dbo].[SkatingLogEntry] ([EntryId])
 GO
 
 CREATE TABLE [dbo].[lkClassifications](
