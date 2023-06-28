@@ -55,7 +55,7 @@ GO
 
 CREATE TABLE [dbo].[LevelState](
 	[Id] [INT] NOT NULL IDENTITY(1,1),
-	[DateTime] [DATETIME2](7) NOT NULL,
+	[Date] [DATETIME2](7) NOT NULL,
 	[FreestyleLevel] [VARCHAR](50) NOT NULL,
 	[DanceLevel] [VARCHAR](50) NOT NULL,
 	[PairsLevel] [VARCHAR](50) NOT NULL,
