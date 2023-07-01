@@ -1,0 +1,4 @@
+USE [SkatingLogDB]
+GO
+
+DROP TABLE IF EXISTS Users;
