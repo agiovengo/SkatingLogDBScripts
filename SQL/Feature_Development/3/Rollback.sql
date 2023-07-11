@@ -1,0 +1,8 @@
+USE [SkatingLogDB]
+GO
+
+ALTER TABLE Users
+DROP CONSTRAINT DF_Users_Role;
+
+ALTER TABLE Users
+DROP COLUMN Role;
